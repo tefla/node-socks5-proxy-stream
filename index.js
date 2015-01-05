@@ -237,7 +237,7 @@ Socks5Proxy.prototype._write = function (chunk, enc, cb) {
 			this.validator = function(reqType, addr, port, vcb){ process.nextTick(function(){ vcb(true); }); };
 		}
 		this.state = states.WAIT_CONNECTION_ESTABLISHING;
-		this.validator(requestType, addr, port, function(allow){
+		this.validator(requestType, addr, port, function(allow, addr){
 			if(allow){
 				this.createConnection(requestType, addr, port);
 			}else{
